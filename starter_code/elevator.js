@@ -7,18 +7,24 @@ class Elevator {
   }
 
   start() {
-    this.intervalID = setInterval(() => this.update(), 1000);
+    return this.intervalID = setInterval(() => this.floorDown(), 1000);
   }
   stop() {
     this.clearInterval(this.intervalID);
   }
   update() {
-    this.log();
+    return this.log();
   }
   _passengersEnter() { }
   _passengersLeave() { }
-  floorUp() { }
-  floorDown() { }
+  floorUp() {
+    this.floor = this.floor < this.MAXFLOOR ? this.floor +1 : this.floor;
+    this.update();
+  }
+  floorDown() {
+    this.floor = this.floor > 0 ? this.floor -1 : this.floor;
+    this.update();
+  }
   call() { }
   log() {
     console.log(`Direction: ${this.direction} | Floor: ${this.floor}`);
