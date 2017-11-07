@@ -10,6 +10,6 @@ let myElevator = new Elevator;
 
 myElevator.start();
 myElevator.call(Martin);
-// myElevator.call(Francis);
-// myElevator.call(Steven);
-// myElevator.call(Lars);
+myElevator.call(Francis);
+myElevator.call(Steven);
+myElevator.call(Lars);

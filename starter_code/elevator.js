@@ -14,7 +14,7 @@ class Elevator {
   }
   stop() {
     // console.log(this.requests);
-    // clearInterval(this.intervalID);
+    clearInterval(this.intervalID);
   }
   update() {
     console.log(this.requests);
@@ -36,29 +36,29 @@ class Elevator {
         }
       }
       }
-    // if(this.passengers.length === 0) {
-    //   console.log('-EMPTY ELEVATOR-');
-    // } else {
-    //   //Take the person out of the elevator if it has arrived to destination floor
-    //   for(let i = this.passengers.length -1; i >= 0; i--) {
-    //     if(this.floor === this.passengers[i].destinationFloor) {
-    //       this._passengersLeave(i, this.passengers[i]);
-    //     }
-    //   }
-    // }
-    // // Delete the completed requests then move the elevator if not completed
-    // for(let i = this.requests.length -1; i >= 0; i--) {
-    //   if(this.floor === this.requests[i]) {
-    //     this.requests.splice(i, 1);
-    //   }
-    // }
-    // // Move the elevator
-    // let floorToGo = this.requests[0];
-    // this.destination = floorToGo > this.floor ? 'up' : 'down';
-    // this.log();
-    //
-    // if(this.direction === 'up') this.floorUp();
-    // if(this.direction === 'down') this.floorDown();
+    if(this.passengers.length === 0) {
+      console.log('-EMPTY ELEVATOR-');
+    } else {
+      //Take the person out of the elevator if it has arrived to destination floor
+      for(let i = this.passengers.length -1; i >= 0; i--) {
+        if(this.floor === this.passengers[i].destinationFloor) {
+          this._passengersLeave(i, this.passengers[i]);
+        }
+      }
+    }
+    // Delete the completed requests then move the elevator if not completed
+    for(let i = this.requests.length -1; i >= 0; i--) {
+      if(this.floor === this.requests[i]) {
+        this.requests.splice(i, 1);
+      }
+    }
+    // Move the elevator
+    let floorToGo = this.requests[0];
+    this.destination = floorToGo > this.floor ? 'up' : 'down';
+    this.log();
+
+    if(this.direction === 'up') this.floorUp();
+    if(this.direction === 'down') this.floorDown();
   }
   _passengersEnter(person) {
     this.passengers.push(person);
@@ -70,11 +70,11 @@ class Elevator {
   }
   floorUp() {
     this.floor = this.floor < this.MAXFLOOR ? this.floor +1 : this.floor;
-    this.update();
+    // this.update();
   }
   floorDown() {
     this.floor = this.floor > 0 ? this.floor -1 : this.floor;
-    this.update();
+    // this.update();
   }
   call(person) {
     this.waitingList.push(person);
